@@ -1,0 +1,7 @@
+EXPORTS
+
+	newWSFMod
+	freeWSFMod
+	
+	newWSFPack
+	freeWSFPack
