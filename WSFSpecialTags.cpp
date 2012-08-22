@@ -52,12 +52,12 @@ char b[11][10] =
 
 #pragma warning(disable: 4244)
 
-void CWSFSTagHandler::RunSEcho( int *bSmpPtr, long nSamples, int nCh, int nBitRate )
+void CWSFSTagHandler::RunSEcho( int *bSmpPtr, int nSamples, int nCh, int nBitRate )
 {
 	int x,s,e;
 	int idx;
-	long ctr;
-	long delay;
+	int ctr;
+	int delay;
 	delay = 50;
 	int *buf;
 	int len;
@@ -269,7 +269,7 @@ void CWSFSTagHandler::InitDSPEffects( int nBitRate, int nCh, int nSRate )
 //
 //////////////////////////////////////////////////////
 
-void CWSFSTagHandler::ProcessDSPEffects( int **bSmpPtr, long nSamples, int nCh, int nBitRate, int nSRate )
+void CWSFSTagHandler::ProcessDSPEffects( int **bSmpPtr, int nSamples, int nCh, int nBitRate, int nSRate )
 {
 	if (nBitRate != 32 || bSmpPtr == NULL)
 		return;
@@ -278,7 +278,7 @@ void CWSFSTagHandler::ProcessDSPEffects( int **bSmpPtr, long nSamples, int nCh, 
 	{
 		int p,m,l;
 		int x;
-		long s;
+		int s;
 		p = m = l = 0;
 
 		for (p=0;p<nSamples;p++)
@@ -298,7 +298,7 @@ void CWSFSTagHandler::ProcessDSPEffects( int **bSmpPtr, long nSamples, int nCh, 
         for (x = 0; x < nSamples; x++)
         {
 			for (m=0;m<nCh;m++){
-				long y;
+				int y;
 				y = m_interw[p];
 				if (y> 0x7FFFFF)
 					y=0x7FFFFF;
@@ -399,10 +399,10 @@ wsf_stags *CWSFSTagHandler::GetSettings( void )
 
 #if 0
 	
-void DoReverb(unsigned char *buf,long len)
+void DoReverb(unsigned char *buf,int len)
 {
 short int x,s,e;
-long ctr;
+int ctr;
 
    for(ctr=0; ctr<len; ctr+=2)
    {

@@ -83,7 +83,7 @@ extern char *g_cModDesc[];
 /// These are flags to show whether or not the format is supported or not
 extern wsfb g_bModFlag[];
 
-wsfb *ReplaceData( wsfb *bIn, unsigned long nIn, unsigned long *nOut, unsigned long nRepOff, unsigned long nRepLength, wsfb *bFill, unsigned long nFillLen );
+wsfb *ReplaceData( wsfb *bIn, unsigned int nIn, unsigned int *nOut, unsigned int nRepOff, unsigned int nRepLength, wsfb *bFill, unsigned int nFillLen );
 
 /// Preserves ModFusion v1 WSF format!
 /// Handles Loading + Saving WSF modules.
@@ -102,7 +102,7 @@ public:
 	int Save( wsf_modout *wOut, wsf_loaddata *wLD );
 
 	// Additional Saving Unit
-	int Save( wsf_modout *wOut, wsf_loaddata *wLD, long *nSCounts );
+	int Save( wsf_modout *wOut, wsf_loaddata *wLD, int *nSCounts );
 
 	/// Function to get pointers to ACTUAL samples
 //	int GetSamplePointers( wsfb *bData, wsul nSize, wsf_gspdata *gspData );
@@ -162,7 +162,7 @@ public:
 	int FreeMod( void );
 
 	/// Write Mod
-	int WriteMod( wsf_modout *wOut, int nWSF, long *nSCounts = NULL );
+	int WriteMod( wsf_modout *wOut, int nWSF, int *nSCounts = NULL );
 
 	/// Save Pack
 	int SavePack( int nComp );

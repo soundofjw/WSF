@@ -94,7 +94,7 @@ typedef struct wsf2samparray_s
 	wsul nSamplesTotal; ///< Total number of samples in the mod (Only used in WINWSF)
 #endif
 	wsul nCurID;	///< ID of the currently tested sample. :0
-	long *nSCounts; ///< Used to count the total number of each type. :D See CWSFLoader::Save()
+	int *nSCounts; ///< Used to count the total number of each type. :D See CWSFLoader::Save()
 
 } WSF2SampArray;
 
@@ -130,15 +130,15 @@ public:
 
 	/// Gets sample by ID. Use with Version 1!
 	/// \return 0 if no error, 1 if error, -1 if loaded sample but NO SAMPLE DATA
-	int GetSampV2( wsf_sampout *wOut, unsigned long nID, wsfb bFlag, wsul nPar1, wsul nPar2 = 0, float bAmp = 100.0f, WSF2Samps wSamps = NULL ); // Returns 1 if error :<
+	int GetSampV2( wsf_sampout *wOut, unsigned int nID, wsfb bFlag, wsul nPar1, wsul nPar2 = 0, float bAmp = 100.0f, WSF2Samps wSamps = NULL ); // Returns 1 if error :<
 
 	/// Gets sample by ID. V1.x WSFMod compatible!
 	/// \return 0 if no error, 1 if error, -1 if loaded sample but NO SAMPLE DATA
-	int GetSampV1( wsf_sampout *wOut, unsigned long nID, wsfb bFlag, wsul nPar, wsfb bAmp ); // Returns 1 if error :<
+	int GetSampV1( wsf_sampout *wOut, unsigned int nID, wsfb bFlag, wsul nPar, wsfb bAmp ); // Returns 1 if error :<
 
 	/// Gets sample by ID, used internally when not loading. Refers to V1.x WSFMod.
 	/// (Usually used when retrieving no data)
-	int GetSamp( wsf_sampout *wOut, unsigned long nID, wsfb bFlag, wsul nPar, wsfb bAmp );
+	int GetSamp( wsf_sampout *wOut, unsigned int nID, wsfb bFlag, wsul nPar, wsfb bAmp );
 
 	/// Gets a samples size, even if its unloaded.
 	wsul GetSampSize( wsul nID );
@@ -193,17 +193,17 @@ public:
 	int SavePack( wsf_file *PFile, wsfb bComp );
 
 	/// Compresses Sample
-	int CompressSample( wsfb *bFullSamp, unsigned long nFullSize, wsfb **bOutSamp, unsigned long *nCompSize );
+	int CompressSample( wsfb *bFullSamp, unsigned int nFullSize, wsfb **bOutSamp, unsigned int *nCompSize );
 
 #endif
 
 	/// DeCompresses Sample
-	int DeCompressSample( wsfb *bCompSamp, unsigned long nCompSize, wsfb **bOutSamp, unsigned long nFullSize );
+	int DeCompressSample( wsfb *bCompSamp, unsigned int nCompSize, wsfb **bOutSamp, unsigned int nFullSize );
 
 	/// Makes percentage out of two integers
 	/// \param nLow Low UL (50 out of 100 = 50)
 	/// \param nHi Hi UL (50 out of 100 = 100)
-	unsigned long MakePercent( wsul nLow, wsul nHi );
+	unsigned int MakePercent( wsul nLow, wsul nHi );
 
 	void SetSampleFreq( wsul nID, wsul nFreq )
 	{
@@ -212,7 +212,7 @@ public:
 	};
 
 	/// Gets Number of Samples
-	unsigned long GetNumSamples( void )
+	unsigned int GetNumSamples( void )
 	{
 		return m_nSamples;
 	};
@@ -256,7 +256,7 @@ private:
 
 	int m_nLoaded;				// Loaded?
 
-	unsigned long m_nSamples;	// Number of Samples
+	unsigned int m_nSamples;	// Number of Samples
 	wsf_sample *m_wSamples;		// Samples	
 
 };

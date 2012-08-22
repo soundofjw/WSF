@@ -98,8 +98,8 @@ extern "C" {
      typedef int                lzo_int32;
 #    define LZO_UINT32_MAX      UINT_MAX
 #  elif (ULONG_MAX >= 0xffffffffL)
-     typedef unsigned long      lzo_uint32;
-     typedef long               lzo_int32;
+     typedef unsigned int      lzo_uint32;
+     typedef int               lzo_int32;
 #    define LZO_UINT32_MAX      ULONG_MAX
 #  else
 #    error lzo_uint32
@@ -113,8 +113,8 @@ extern "C" {
      typedef int                lzo_int;
 #    define LZO_UINT_MAX        UINT_MAX
 #  elif (ULONG_MAX >= 0xffffffffL)
-     typedef unsigned long      lzo_uint;
-     typedef long               lzo_int;
+     typedef unsigned int      lzo_uint;
+     typedef int               lzo_int;
 #    define LZO_UINT_MAX        ULONG_MAX
 #  else
 #    error lzo_uint

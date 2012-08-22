@@ -62,8 +62,8 @@ extern CStatusDlg *g_mStatus;
 
 wsfb	*gp_bS;	// Byte Start
 wsfb	*gp_bP;	// Byte Pos
-unsigned long gp_nB;	// Size of bytes
-unsigned long gp_nW;
+unsigned int gp_nB;	// Size of bytes
+unsigned int gp_nW;
 
 #define POPEN(x,y)		{ gp_bS = x; gp_bP = gp_bS; gp_nB = y; gp_nW = 0; }
 #define PREAD(x,y,z)	{ memcpy(x,gp_bP,y*z); gp_bP+=y*z; }
@@ -77,8 +77,8 @@ unsigned long gp_nW;
 
 wsfb	*gm_bS;	// Byte Start
 wsfb	*gm_bP;	// Byte Pos
-unsigned long gm_nB;	// Size of bytes
-unsigned long gm_nW;
+unsigned int gm_nB;	// Size of bytes
+unsigned int gm_nW;
 
 #define MOPEN(x,y)		{ gm_bS = x; gm_bP = gm_bS; gm_nB = y; gm_nW = 0; }
 #define MREAD(x,y,z)	{ memcpy(x,gm_bP,y*z); gm_bP+=y*z; }
@@ -222,7 +222,7 @@ CWSFPackV1::~CWSFPackV1()
 // 
 //***************************************************************************** */
 
-int CWSFPackV1::CompressSample( wsfb *bFullSamp, unsigned long nFullSize, wsfb **bOutSamp, unsigned long *nCompSize )
+int CWSFPackV1::CompressSample( wsfb *bFullSamp, unsigned int nFullSize, wsfb **bOutSamp, unsigned int *nCompSize )
 {
 	return DoCompression(bFullSamp,nFullSize,0,bOutSamp,nCompSize,true);
 }
@@ -244,7 +244,7 @@ int CWSFPackV1::CompressSample( wsfb *bFullSamp, unsigned long nFullSize, wsfb *
 // 
 //***************************************************************************** */
 
-int CWSFPackV1::DeCompressSample( wsfb *bCompSamp, unsigned long nCompSize, wsfb **bOutSamp, unsigned long nFullSize )
+int CWSFPackV1::DeCompressSample( wsfb *bCompSamp, unsigned int nCompSize, wsfb **bOutSamp, unsigned int nFullSize )
 {
 	return DoCompression(bCompSamp,nCompSize,nFullSize,bOutSamp,NULL,false);
 }
@@ -298,7 +298,7 @@ int CWSFPackV1::LoadPack( wsf_file *PFile, wsul *nIDs, wsus nNumIDs )
 	char cHead[4];
 	wsfb bHi, bLo;
 	wsfb bComp;
-	unsigned long i;
+	unsigned int i;
 
 	wsfbegin(0,PFile);
 
@@ -328,7 +328,7 @@ int CWSFPackV1::LoadPack( wsf_file *PFile, wsul *nIDs, wsus nNumIDs )
 	wsfread(&bComp,1,PFile);	// 
 
 	// Get Number of Samples
-	wsfread(&m_nSamples,sizeof(unsigned long),PFile);
+	wsfread(&m_nSamples,sizeof(unsigned int),PFile);
 
 	// Reallocate for number of samples
 	m_wSamples = (wsf_sample*)realloc(m_wSamples,sizeof(wsf_sample)*m_nSamples);
@@ -385,7 +385,7 @@ int CWSFPackV1::LoadPack( wsf_file *PFile, wsul *nIDs, wsus nNumIDs )
 			wSamp->cSignature[30] = 0;
 
 			// Read Sample Size
-			wsfread(&wSamp->nSize,sizeof(unsigned long),PFile);
+			wsfread(&wSamp->nSize,sizeof(unsigned int),PFile);
 			wSamp->nRawSize = wSamp->nSize;
 			wSamp->nStoredSize = wSamp->nSize;
 
@@ -409,8 +409,8 @@ int CWSFPackV1::LoadPack( wsf_file *PFile, wsul *nIDs, wsus nNumIDs )
 		else
 		{
 			// Compressed Sampledata ;_;
-			unsigned long nFullSize;	// Full Size
-			unsigned long nCompSize;	// Size when Compressed
+			unsigned int nFullSize;	// Full Size
+			unsigned int nCompSize;	// Size when Compressed
 			wsfb *bCompData;			// Compressed DAta
 
 			// Sample Signature
@@ -418,7 +418,7 @@ int CWSFPackV1::LoadPack( wsf_file *PFile, wsul *nIDs, wsus nNumIDs )
 			wSamp->cSignature[30] = 0;
 
 			// Sample Size
-			wsfread(&nCompSize,sizeof(unsigned long),PFile);
+			wsfread(&nCompSize,sizeof(unsigned int),PFile);
 			wSamp->nStoredSize = nCompSize;
 
 			if (nF)
@@ -428,7 +428,7 @@ int CWSFPackV1::LoadPack( wsf_file *PFile, wsul *nIDs, wsus nNumIDs )
 				wsfread(bCompData,nCompSize,PFile);
 
 				// Sample UnComp Size
-				wsfread(&nFullSize,sizeof(unsigned long),PFile);
+				wsfread(&nFullSize,sizeof(unsigned int),PFile);
 				wSamp->nSize = nFullSize;
 				wSamp->nRawSize = nFullSize;
 
@@ -558,7 +558,7 @@ int CWSFPackV1::SavePack( wsfb **bData, wsul *nSize, wsfb bComp )
 int CWSFPackV1::SavePack( wsf_file *PFile, wsfb bComp )
 {
 	wsfb bHi, bLo;
-	unsigned long i;
+	unsigned int i;
 
 	// Setup Stuff
 	bHi = WSFP1VERHI;
@@ -584,7 +584,7 @@ int CWSFPackV1::SavePack( wsf_file *PFile, wsfb bComp )
 	wsfwrite(&bComp,1,PFile);	// (at 1.0 should be 0)
 
 	// # of samples
-	wsfwrite(&m_nSamples,sizeof(unsigned long),PFile);
+	wsfwrite(&m_nSamples,sizeof(unsigned int),PFile);
 
 #if WINWSF
 	g_mStatus->SetSubProgressSteps(m_nSamples);
@@ -651,7 +651,7 @@ int CWSFPackV1::SavePack( wsf_file *PFile, wsfb bComp )
 			wsfwrite(wSamp->cSignature,30,PFile);
 
 			// Write Sample Size
-			wsfwrite(&nSSize,sizeof(unsigned long),PFile);
+			wsfwrite(&nSSize,sizeof(unsigned int),PFile);
 
 			// Encode Sample
 			if (m_nPassSum)
@@ -667,8 +667,8 @@ int CWSFPackV1::SavePack( wsf_file *PFile, wsfb bComp )
 		else
 		{
 			// Compressed Sampledata ;_;
-			unsigned long nFullSize;	// Full Size
-			unsigned long nCompSize;	// Size when Compressed
+			unsigned int nFullSize;	// Full Size
+			unsigned int nCompSize;	// Size when Compressed
 			wsfb *bCompData;			// Compressed Data
 
 			// Sample Signature
@@ -686,13 +686,13 @@ int CWSFPackV1::SavePack( wsf_file *PFile, wsfb bComp )
 				DecodeData(bSData,m_nPassSum,nSSize);
 
 			// Sample Size
-			wsfwrite(&nCompSize,sizeof(unsigned long),PFile);
+			wsfwrite(&nCompSize,sizeof(unsigned int),PFile);
 			
 			// Make memory and compressed sample data
 			wsfwrite(bCompData,nCompSize,PFile);
 
 			// Sample UnComp Size
-			wsfwrite(&nFullSize,sizeof(unsigned long),PFile);
+			wsfwrite(&nFullSize,sizeof(unsigned int),PFile);
 
 			free(bCompData);
 		}
@@ -744,7 +744,7 @@ int CWSFPackV1::SavePack( wsf_file *PFile, wsfb bComp )
 
 int CWSFPackV1::FreePack( void )
 {
-	unsigned long i;
+	unsigned int i;
 
 	// Only call if loaded
 	if (!m_nLoaded)
@@ -772,11 +772,11 @@ int CWSFPackV1::FreePack( void )
 // [nLow] :
 // [nHi] :
 // 
-// Returns:	unsigned long
+// Returns:	unsigned int
 // 
 //***************************************************************************** */
 
-unsigned long CWSFPackV1::MakePercent( wsul nLow, wsul nHi )
+unsigned int CWSFPackV1::MakePercent( wsul nLow, wsul nHi )
 {
 	double n1;
 	double n2;
@@ -809,8 +809,8 @@ unsigned long CWSFPackV1::MakePercent( wsul nLow, wsul nHi )
 
 int CWSFPackV1::MakeOldSignature( wsfb *wSamp, wsul nSize, char *cOut )
 {
-	unsigned long i=0;
-	unsigned long nSegLen;
+	unsigned int i=0;
+	unsigned int nSegLen;
 	wsfb *bPos;
 	char *cPos;
 
@@ -869,8 +869,8 @@ int CWSFPackV1::MakeOldSignature( wsfb *wSamp, wsul nSize, char *cOut )
 
 int CWSFPackV1::CreateSignature( wsfb *wSamp, wsul nSize, wsus nCh, wsus nBit, wsul nSamps, char *cOut )
 {
-	unsigned long nSegLen;		// Size of each segment to scan in order to equal SIGNATURESIZE for cOut
-	unsigned long i;
+	unsigned int nSegLen;		// Size of each segment to scan in order to equal SIGNATURESIZE for cOut
+	unsigned int i;
 	wsfb *bPos;
 	char *cPos;
 	wsul nSub;
@@ -1036,7 +1036,7 @@ int CWSFPackV1::CreateSignature( wsfb *wSamp, wsul nSize, wsus nCh, wsus nBit, w
 
 int CWSFPackV1::GetSamp( wsf_sampout *wOut, char *cSampSig )
 {
-	unsigned long i;
+	unsigned int i;
 
 	// Search!
 	for (i=0;i<m_nSamples;i++)
@@ -1076,7 +1076,7 @@ int CWSFPackV1::GetSamp( wsf_sampout *wOut, char *cSampSig )
 // 
 //***************************************************************************** */
 
-int CWSFPackV1::GetSamp( wsf_sampout *wOut, unsigned long nID, wsfb bFlag, wsul nPar, wsfb bAmp )
+int CWSFPackV1::GetSamp( wsf_sampout *wOut, unsigned int nID, wsfb bFlag, wsul nPar, wsfb bAmp )
 {
 	wsul nSize;
 	wsfb *bWPos;
@@ -1219,9 +1219,9 @@ int CWSFPackV1::GetSamp( wsf_sampout *wOut, unsigned long nID, wsfb bFlag, wsul 
 // 
 //***************************************************************************** */
 
-unsigned long CWSFPackV1::SampleExist( char *cSampSig, int nCh, int nBit )
+unsigned int CWSFPackV1::SampleExist( char *cSampSig, int nCh, int nBit )
 {
-	unsigned long i;
+	unsigned int i;
 
 	// Search!
 	for (i=0;i<m_nSamples;i++)
@@ -1579,7 +1579,7 @@ wsul CWSFPackV1::SampleExist( wsf_sampout *wInSamp, wsfb *bFlag, wsul *nPar, wsf
 // 
 //***************************************************************************** */
 
-unsigned long CWSFPackV1::AddSample( wsf_sampout *wInSamp, wsfb *bSig )
+unsigned int CWSFPackV1::AddSample( wsf_sampout *wInSamp, wsfb *bSig )
 {
 	wsf_sample *wSamp;
 

@@ -23,11 +23,11 @@
 
 typedef unsigned char byte;
 typedef unsigned short word;
-typedef unsigned long dword;
+typedef unsigned int dword;
 
 byte *g_b;
-unsigned long g_p;
-unsigned long g_s;
+unsigned int g_p;
+unsigned int g_s;
 
 #define BYTE byte
 
@@ -51,7 +51,7 @@ int getiw (void)
 
 static int readblock(void)
 {
-	long size;
+	int size;
 
 	size = getiw();
 	if (size < 0)
@@ -106,7 +106,7 @@ static int readbits(int bitwidth)
 /** WARNING - do we even need to pass `right`? */
 /** WARNING - why bother memsetting at all? The whole array is written... */
 /** WARNING - check for endianness safety */
-unsigned long wsf_decompress8(unsigned char *f, signed char *left, signed char *right, int len, int cmwt)
+unsigned int wsf_decompress8(unsigned char *f, signed char *left, signed char *right, int len, int cmwt)
 {
 	int blocklen, blockpos;
 	byte bitwidth;
@@ -198,11 +198,11 @@ unsigned long wsf_decompress8(unsigned char *f, signed char *left, signed char *
 }
 
 
-unsigned long wsf_decompress16(unsigned char *f, signed char *left, signed char *right, int len, int cmwt)
+unsigned int wsf_decompress16(unsigned char *f, signed char *left, signed char *right, int len, int cmwt)
 {
 	int blocklen, blockpos;
 	byte bitwidth;
-	long val;
+	int val;
 	short d1, d2;
 
 	g_b = f;
@@ -288,7 +288,7 @@ unsigned long wsf_decompress16(unsigned char *f, signed char *left, signed char 
 	return g_b-f;
 }
 
-unsigned long ITReadBits(unsigned long *bitbuf, unsigned int *bitnum, byte *ibuf, char n)
+unsigned int ITReadBits(unsigned int *bitbuf, unsigned int *bitnum, byte *ibuf, char n)
 //-----------------------------------------------------------------
 {
 	dword retval = 0;
@@ -315,22 +315,22 @@ unsigned long ITReadBits(unsigned long *bitbuf, unsigned int *bitnum, byte *ibuf
 }
 
 #define IT215_SUPPORT
-unsigned long wsfITUnpack8Bit(char *pSample, unsigned long dwLen, byte * lpMemFile, unsigned long dwMemLength, int b215)
+unsigned int wsfITUnpack8Bit(char *pSample, unsigned int dwLen, byte * lpMemFile, unsigned int dwMemLength, int b215)
 //-------------------------------------------------------------------------------------------
 {
 	char *pDst = pSample;
 	byte *pSrc = lpMemFile;
-	unsigned long wHdr = 0;
-	unsigned long wCount = 0;
-	unsigned long bitbuf = 0;
+	unsigned int wHdr = 0;
+	unsigned int wCount = 0;
+	unsigned int bitbuf = 0;
 	unsigned int bitnum = 0;
 	BYTE bLeft = 0, bTemp = 0, bTemp2 = 0;
 
 	memset(pSample,0,dwLen);
 	while (dwLen)
 	{
-		unsigned long dwPos;
-		unsigned long d;
+		unsigned int dwPos;
+		unsigned int d;
 		if (!wCount)
 		{
 			wCount = 0x8000;
@@ -349,8 +349,8 @@ unsigned long wsfITUnpack8Bit(char *pSample, unsigned long dwLen, byte * lpMemFi
 			word wBits = (word)ITReadBits(&bitbuf, &bitnum, pSrc, bLeft);
 			if (bLeft < 7)
 			{
-				unsigned long i = 1 << (bLeft-1);
-				unsigned long j = wBits & 0xFFFF;
+				unsigned int i = 1 << (bLeft-1);
+				unsigned int j = wBits & 0xFFFF;
 				if (i != j) goto UnpackByte;
 				wBits = (word)(ITReadBits(&bitbuf, &bitnum, pSrc, 3) + 1) & 0xFF;
 				bLeft = ((BYTE)wBits < bLeft) ? (BYTE)wBits : (BYTE)((wBits+1) & 0xFF);
@@ -402,22 +402,22 @@ unsigned long wsfITUnpack8Bit(char *pSample, unsigned long dwLen, byte * lpMemFi
 }
 
 
-unsigned long wsfITUnpack16Bit(char *pSample, unsigned long dwLen, byte *lpMemFile, unsigned long dwMemLength, int b215)
+unsigned int wsfITUnpack16Bit(char *pSample, unsigned int dwLen, byte *lpMemFile, unsigned int dwMemLength, int b215)
 //--------------------------------------------------------------------------------------------
 {
 	signed short *pDst = (signed short *)pSample;
 	byte *pSrc = lpMemFile;
-	unsigned long wHdr = 0;
-	unsigned long wCount = 0;
-	unsigned long bitbuf = 0;
+	unsigned int wHdr = 0;
+	unsigned int wCount = 0;
+	unsigned int bitbuf = 0;
 	unsigned int bitnum = 0;
 	BYTE bLeft = 0;
 	signed short wTemp = 0, wTemp2 = 0;
 
 	while (dwLen)
 	{
-		unsigned long d;
-		unsigned long dwPos;
+		unsigned int d;
+		unsigned int dwPos;
 		if (!wCount)
 		{
 			wCount = 0x4000;
@@ -433,11 +433,11 @@ unsigned long wsfITUnpack16Bit(char *pSample, unsigned long dwLen, byte *lpMemFi
 		dwPos = 0;
 		do
 		{
-			unsigned long dwBits = ITReadBits(&bitbuf, &bitnum, pSrc, bLeft);
+			unsigned int dwBits = ITReadBits(&bitbuf, &bitnum, pSrc, bLeft);
 			if (bLeft < 7)
 			{
-				unsigned long i = 1 << (bLeft-1);
-				unsigned long j = dwBits;
+				unsigned int i = 1 << (bLeft-1);
+				unsigned int j = dwBits;
 				if (i != j) goto UnpackByte;
 				dwBits = ITReadBits(&bitbuf, &bitnum, pSrc, 4) + 1;
 				bLeft = ((BYTE)(dwBits & 0xFF) < bLeft) ? (BYTE)(dwBits & 0xFF) : (BYTE)((dwBits+1) & 0xFF);
@@ -445,8 +445,8 @@ unsigned long wsfITUnpack16Bit(char *pSample, unsigned long dwLen, byte *lpMemFi
 			}
 			if (bLeft < 17)
 			{
-				unsigned long i = (0xFFFF >> (17 - bLeft)) + 8;
-				unsigned long j = (i - 16) & 0xFFFF;
+				unsigned int i = (0xFFFF >> (17 - bLeft)) + 8;
+				unsigned int j = (i - 16) & 0xFFFF;
 				if ((dwBits <= j) || (dwBits > (i & 0xFFFF))) goto UnpackByte;
 				dwBits -= j;
 				bLeft = ((BYTE)(dwBits & 0xFF) < bLeft) ? (BYTE)(dwBits & 0xFF) : (BYTE)((dwBits+1) & 0xFF);
@@ -464,7 +464,7 @@ unsigned long wsfITUnpack16Bit(char *pSample, unsigned long dwLen, byte *lpMemFi
 				BYTE shift = 16 - bLeft;
 				signed short c = (signed short)(dwBits << shift);
 				c >>= shift;
-				dwBits = (unsigned long)c;
+				dwBits = (unsigned int)c;
 			}
 			dwBits += wTemp;
 			wTemp = (signed short)dwBits;
@@ -2949,7 +2949,7 @@ static lzo_byte _wrkmem [ LZO1X_MEM_COMPRESS + 16 ];
 // 
 //***************************************************************************** */
 
-int DoCompression( unsigned char *bInput, long nFileSize, long nOldSize, unsigned char **bOutput, unsigned long *nOutLen, char bCompress )
+int DoCompression( unsigned char *bInput, int nFileSize, int nOldSize, unsigned char **bOutput, unsigned int *nOutLen, char bCompress )
 {
 	int r;
 	lzo_uint in_len;

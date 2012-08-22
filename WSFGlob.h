@@ -53,12 +53,12 @@ typedef unsigned char wsfb;
 typedef unsigned short wsus;
 
 /// Unsigned Long Typedef
-typedef unsigned long wsul;
+typedef unsigned int wsul;
 
 /// Sample Output for use with CWSFPack::GetSamp
 typedef struct wsf_sampout_s
 {
-	unsigned long nSize;	///< Size of sample
+	unsigned int nSize;	///< Size of sample
 	wsfb *bSampData;		///< Sample Data
 
 	wsus nCh;			///< Number of Channels
@@ -126,7 +126,7 @@ wsul wsfwrite( void *bData, wsul nSize, wsf_file *wf );
 wsul wsfread( void *bData, wsul nSize, wsf_file *wf );
 void wsfseek( wsul nPos, wsf_file *wf );
 void wsfbegin( wsul nOff, wsf_file *wf );
-void wsfend( long nOff, wsf_file *wf );
+void wsfend( int nOff, wsf_file *wf );
 
 void wsfclose( wsf_file *wf );
 

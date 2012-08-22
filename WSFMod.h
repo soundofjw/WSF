@@ -86,14 +86,14 @@ extern wsfb g_bModFlag[];
 typedef struct wsf_modout_s
 {
 	/// Size of bModData
-	unsigned long nSize;
+	unsigned int nSize;
 
 	/// Mod Buffer
 	wsfb *bModData;
 
 } wsf_modout;
 
-wsfb *ReplaceData( wsfb *bIn, unsigned long nIn, unsigned long *nOut, unsigned long nRepOff, unsigned long nRepLength, wsfb *bFill, unsigned long nFillLen );
+wsfb *ReplaceData( wsfb *bIn, unsigned int nIn, unsigned int *nOut, unsigned int nRepOff, unsigned int nRepLength, wsfb *bFill, unsigned int nFillLen );
 
 #ifndef WSFNOASCII
 
@@ -296,12 +296,12 @@ class CBaseLoader
 
 	/// This function is called by CWSFMod to restore the original samples.
 
-		wsfb *ReplaceData( wsfb *bIn, unsigned long nIn, unsigned long *nOut, unsigned long nRepOff, unsigned long nRepLength, wsfb *bFill, unsigned long nFillLen );
+		wsfb *ReplaceData( wsfb *bIn, unsigned int nIn, unsigned int *nOut, unsigned int nRepOff, unsigned int nRepLength, wsfb *bFill, unsigned int nFillLen );
 
 	wsfb	*g_bS;	///< Byte Start	(used for memorymacros MXXX)
 	wsfb	*g_bP;	///< Byte Pos (used for memorymacros MXXX)
-	unsigned long g_nB;	///< Size of bytes (used for memorymacros MXXX)
-	unsigned long g_nW; ///< Byte Written (used for memorymacros MXXX)
+	unsigned int g_nB;	///< Size of bytes (used for memorymacros MXXX)
+	unsigned int g_nW; ///< Byte Written (used for memorymacros MXXX)
 
 	wsf_sample *m_wCopySamps;	///< 'Carbon Copy' of sample data for AllowSampleEdit
 
@@ -436,10 +436,10 @@ class CWSFLoader : public CBaseLoader
 		int Save( wsf_modout *wOut, wsf_loaddata *wLD );
 
 	/// Additional Saving Unit
-		int Save( wsf_modout *wOut, wsf_loaddata *wLD, long *nSCounts );
+		int Save( wsf_modout *wOut, wsf_loaddata *wLD, int *nSCounts );
 
 	/// Saving V1.x Mods
-		int SaveVer1( wsf_modout *wOut, wsf_loaddata *wLD, long *nSCounts );
+		int SaveVer1( wsf_modout *wOut, wsf_loaddata *wLD, int *nSCounts );
 
 	/// Function to get pointers to ACTUAL samples
 //	int GetSamplePointers( wsfb *bData, wsul nSize, wsf_gspdata *gspData );
@@ -516,7 +516,7 @@ class CWSFMod
 	/// Write Mod.
 	/// Write's Mod
 	/// \param nWSF nonzero if saving to WSF file
-		int WriteMod( wsf_modout *wOut, int nWSF, long *nSCounts = NULL );
+		int WriteMod( wsf_modout *wOut, int nWSF, int *nSCounts = NULL );
 
 #ifndef WSFNOSAVE
 

@@ -192,8 +192,8 @@ int OggEncode( wsul nSize, wsfb *bData, wsul nCh, int nBit, wsf_file *wOut, wsul
   }
   
   while(!eos){
-    long i;
-    long bytes=wsfread(readbuffer,nRLen*4,wIn); /* stereo hardwired here */
+    int i;
+    int bytes=wsfread(readbuffer,nRLen*4,wIn); /* stereo hardwired here */
 
     if(bytes==0){
       /* end of file.  this can be done implicitly in the mainline,

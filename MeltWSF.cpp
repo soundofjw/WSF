@@ -104,14 +104,14 @@ int stricmp( const char *s1, const char *s2 )
 
 int MakeMelt( int argc, char **argv )
 {
-	long nFiles;
-	long x;
+	int nFiles;
+	int x;
 	CWSFMod wMod;
 	CWSFPack *wP;
 	wsfb *bPack;
 	wsul nPack;
 
-	long i;
+	int i;
 	
 	int compile = 0;
 	

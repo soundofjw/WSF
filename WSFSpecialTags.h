@@ -77,11 +77,11 @@ public:
 	void InitDSPEffects( int nBitRate, int nCh, int nSRate );
 
 	// Process DSP Effects
-	void ProcessDSPEffects( int **bSmpPtr, long nSamples,
+	void ProcessDSPEffects( int **bSmpPtr, int nSamples,
 		int nCh, int nBitRate, int nSRate );
 
 	// Simple Echo Processer
-	void RunSEcho( int *bSmpPtr, long nSamples,
+	void RunSEcho( int *bSmpPtr, int nSamples,
 		int nCh, int nBitRate );
 
 	void Reset( void );
