@@ -1,0 +1,38 @@
+var hierarchy =
+[
+    [ "CBaseLoader", "class_c_base_loader.html", [
+      [ "CITLoader", "class_c_i_t_loader.html", null ],
+      [ "CMODLoader", "class_c_m_o_d_loader.html", null ],
+      [ "CS3MLoader", "class_c_s3_m_loader.html", null ],
+      [ "CWSFLoader", "class_c_w_s_f_loader.html", null ],
+      [ "CWSFLoaderV1", "class_c_w_s_f_loader_v1.html", null ],
+      [ "CXMLoader", "class_c_x_m_loader.html", null ]
+    ] ],
+    [ "CWGMPack", "class_c_w_g_m_pack.html", null ],
+    [ "CWGMPickDlg", "class_c_w_g_m_pick_dlg.html", null ],
+    [ "CWSFAscii", "class_c_w_s_f_ascii.html", null ],
+    [ "CWSFMod", "class_c_w_s_f_mod.html", null ],
+    [ "CWSFModV1", "class_c_w_s_f_mod_v1.html", null ],
+    [ "CWSFPack", "class_c_w_s_f_pack.html", null ],
+    [ "CWSFPackV1", "class_c_w_s_f_pack_v1.html", null ],
+    [ "CWSFSets", "class_c_w_s_f_sets.html", null ],
+    [ "CWSFSTagHandler", "class_c_w_s_f_s_tag_handler.html", null ],
+    [ "id3tag_s", "structid3tag__s.html", null ],
+    [ "lzo_align_t", "unionlzo__align__t.html", null ],
+    [ "miniwsfdata_s", "structminiwsfdata__s.html", null ],
+    [ "wgmpick_s", "structwgmpick__s.html", null ],
+    [ "wgmunit_s", "structwgmunit__s.html", null ],
+    [ "wsf2samp_s", "structwsf2samp__s.html", null ],
+    [ "wsf2samparray_s", "structwsf2samparray__s.html", null ],
+    [ "wsf_asciiout_s", "structwsf__asciiout__s.html", null ],
+    [ "wsf_file_s", "structwsf__file__s.html", null ],
+    [ "wsf_loaddata_s", "structwsf__loaddata__s.html", null ],
+    [ "wsf_modout_s", "structwsf__modout__s.html", null ],
+    [ "wsf_sample_s", "structwsf__sample__s.html", null ],
+    [ "wsf_sampout_s", "structwsf__sampout__s.html", null ],
+    [ "wsf_stags_s", "structwsf__stags__s.html", null ],
+    [ "wsfinfo_s", "structwsfinfo__s.html", null ],
+    [ "WSFSettings_s", "struct_w_s_f_settings__s.html", null ],
+    [ "wsft_s", "structwsft__s.html", null ],
+    [ "wsg_gspdata_s", "structwsg__gspdata__s.html", null ]
+];

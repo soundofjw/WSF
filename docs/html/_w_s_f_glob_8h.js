@@ -1,0 +1,28 @@
+var _w_s_f_glob_8h =
+[
+    [ "wsf_sampout_s", "structwsf__sampout__s.html", "structwsf__sampout__s" ],
+    [ "wsf_sample_s", "structwsf__sample__s.html", "structwsf__sample__s" ],
+    [ "wsf_file_s", "structwsf__file__s.html", "structwsf__file__s" ],
+    [ "miniwsfdata_s", "structminiwsfdata__s.html", "structminiwsfdata__s" ],
+    [ "DEFSNESECHO", "_w_s_f_glob_8h.html#aaecddc5d5daf36a3b4e0d57c65ae11be", null ],
+    [ "TESTVER", "_w_s_f_glob_8h.html#a4b856f172a6de4ad7a123c32857834ef", null ],
+    [ "WSF_ID", "_w_s_f_glob_8h.html#a0becaf41d14cc9131e361c160de77dc1", null ],
+    [ "WSFERR", "_w_s_f_glob_8h.html#aec80de1abd95a9053fc415b182ef8b57", null ],
+    [ "MiniWSFData", "_w_s_f_glob_8h.html#ad59b3b30f2e66efdbe13741eadf32736", null ],
+    [ "wsf_file", "_w_s_f_glob_8h.html#aabcd20a2a1fe9a07b49e0fb62199eada", null ],
+    [ "wsf_sample", "_w_s_f_glob_8h.html#a27e908f91c3625118a994cb2161b3e66", null ],
+    [ "wsf_sampout", "_w_s_f_glob_8h.html#a3f71d8abb60e8910e000e0de5096a35c", null ],
+    [ "wsfb", "_w_s_f_glob_8h.html#a1bbdc5741cd50c9c7b6bd399d9765b7b", null ],
+    [ "wsul", "_w_s_f_glob_8h.html#aa7cefd24d4e999b49f308f2c2906ec16", null ],
+    [ "wsus", "_w_s_f_glob_8h.html#a00fda5dcd0961033fdd7a80857f49a93", null ],
+    [ "wsfbegin", "_w_s_f_glob_8h.html#a348ca53f7d9ad15642ed22073102432c", null ],
+    [ "wsfclose", "_w_s_f_glob_8h.html#a18a4088f26d7ab5a82eb510df0f96987", null ],
+    [ "wsfcreatefile", "_w_s_f_glob_8h.html#a82ed6cfb211282112537a92bf5fdcfc7", null ],
+    [ "wsfcreatemem", "_w_s_f_glob_8h.html#a9fda3fc66caa24fb6ba3240f7d0a0dc9", null ],
+    [ "wsfend", "_w_s_f_glob_8h.html#adefd6acb82e9a255e86748c00ad60e70", null ],
+    [ "wsfopenfile", "_w_s_f_glob_8h.html#ad1f16b4e09e1672752b77d23e117eae6", null ],
+    [ "wsfopenmem", "_w_s_f_glob_8h.html#a1cb162a5194609444f32b5b9b17b5726", null ],
+    [ "wsfread", "_w_s_f_glob_8h.html#aa7471e3f3c367ce076c7973ed637029d", null ],
+    [ "wsfseek", "_w_s_f_glob_8h.html#a31862f685f9e6ce4edbf30ae82d8b370", null ],
+    [ "wsfwrite", "_w_s_f_glob_8h.html#a0316d632cc5926bf107205f6690c6896", null ]
+];

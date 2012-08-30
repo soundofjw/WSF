@@ -7,25 +7,21 @@
 /*!	\mainpage Whelchel Sound Format
 
 	<center>
-	\image html WSFLogo.jpg
 
-	<b><big>WSF Format</big></b><br>
-	<b>Release 001</b><br>
+	<b><h1>WSF Format</h1></b><br>
 	</center>
 
-	\section news News & Latest Versions
+	\section news WSF Module Packer Documentation
+ 
+    <small>Please apologize any crude remarks in the documentation and code. This code was written in 2003 when I was 16 years old. :P<br/>
+        You can find me on <a href="http://www.twitter.com/soundofjw">twitter</a> and harrass me about it. - Josh, 2012</small>
 
 	<table width=100% border=0>
 	<tr>
 	<td width=65% valign=top>
 
-	<b></h2>News</h2></b>\n\n
-	
-	\htmlinclude WSFNews.txt
-
 	<b><h2>Important Links</h2></b>\n\n
 
-	\ref wsfdownls "WSF Downloads" \n
 	\ref wsffaq "WSF FAQ" \n
 	\ref wsfohc \n
 
@@ -69,74 +65,6 @@
 	*/
 
 /*!
-	\page wsfdownls WSF Downloads
-
-	<center>
-	\image html WSFLogo.jpg
-	\n\n
-	<small>These files are built with this documentation.\n
-	All binaries should be up to date with this material.\n</small>
-	</center>\n
-
-
-	\section wsfplayersec WSF Players
-	WSF Players
-
-	- <a href="http://www.syntesis.org/syntesis/downloads.php?did=7&mode=dl">WSFPlay</a>\n
-	Simple WSF Player. Created from WSFPlay.cpp
-
-	- <a href="http://www.syntesis.org/syntesis/downloads.php?did=8&mode=dl">INWSF</a>\n
-	Simple WSF Winamp2 Plugin. Created from in_wsf.cpp
-
-	\section wsftoolssec WSF Tools
-	WSF Tools
-
-	- <a href="WinWSFTool.zip">WinWSF Tool</a>\n
-	A suite of tools for WSF files for Windows!
-
-	- <a href="MiniWSF.zip">MiniWSF</a>\n
-	A small program that creates self extracting packages for modules.\n
-	<i>Great for One Hour Compos!!</i>
-
-	- <a href="MeltWSF.zip">MeltWSF</a>\n
-	A VERY small program that can 'melt' the MiniWSF executables.\n
-	The source code for this is wonderful for *nix systems and NonWin32 users
-	who participate in One Hour Compos.
-
-	- <a href="MeltWSFSource.zip">MeltWSF Source</a>\n
-	Source Code needed to compile MeltWSF. This excludes all the unneccesary files.\n
-	Build with: <b>make -f meltmake</b>
-
-	- <a href="http://www.syntesis.org/syntesis/downloads.php?did=5&mode=dl">WSF Tool</a>\n
-	Program to convert mods into WSF files and vice versa\n
-	Also includes other various features!
-
-	\section wsflibrarys WSF Libraries
-	WSF Libraries
-
-	- <a href="http://www.syntesis.org/syntesis/downloads.php?did=9&mode=dl">WSFDLL</a>\n
-	DLL wrapper for WSF (with decl + support for BLITZ USERLIBS)
-
-	\section wsfsamplessec WSF Samples
-	WSF Sample Sets
-
-	- <a href="http://www.syntesis.org/wsf/wsfnekobot.rar">Neko Bot Soundtrack</a>\n
-	Soundtrack from the <a href="http://www.kedamonoware.com">Kedamonoware</a> game, 
-	<a href="http://www.kedamonoware.com">Neko Bot</a>.
-
-	\section wsfsourcedl WSF Source
-	
-	- <a href="http://www.syntesis.org/wsf/WSFSource.tar.gz">WSF Source</a>\n
-	This package is explained \ref wsfsource "HERE"
-
-	- <a href="MeltWSFSource.zip">MeltWSF Source</a>\n
-	Source Code needed to compile MeltWSF. This excludes all the unneccesary files.\n
-	Build with: <b>make -f meltmake</b>
-
-
-*/
-
-/*!
 
 	\page usingwsfpage How to Use
 
@@ -152,24 +80,24 @@
 	After you have downloaded WSFTool you can easily begin to create
 	WSF files from your mods.
 
-		-# <b>Sort your modules</b>\n
-		Place all your modules in one directory
-		and have them named how you like.\n
+	-# <b>Sort your modules</b>\n
+	Place all your modules in one directory
+	and have them named how you like.\n
 
-		-# <b>Run WSFTool</b>\n
-		In the command line, go to the directory of your modules.
-		If the directory of your WSF utils is not in the path,
-		you should put it there.\n
-		\code WSFTool *.it -MThePack.wsp \endcode \n
-		\note ThePack.wsp may be replaced with any filename.\n
-		You can add to this pack by running the same thing with a diffrent wildcard.\n
-		(Sample packs may hold more than one type of file format!)\n\n
+	-# <b>Run WSFTool</b>\n
+	In the command line, go to the directory of your modules.
+	If the directory of your WSF utils is not in the path,
+	you should put it there.\n
+	\code WSFTool *.it -MThePack.wsp \endcode \n
+	\note ThePack.wsp may be replaced with any filename.\n
+	You can add to this pack by running the same thing with a diffrent wildcard.\n
+	(Sample packs may hold more than one type of file format!)\n\n
 
-		
-		-# <b>Distribute your WSFs</b>\n
-		In order to distribute your WSFs, the WSP file 
-		(or whatever file you generated as the pack) 
-		must be included with it.\n
+	
+	-# <b>Distribute your WSFs</b>\n
+	In order to distribute your WSFs, the WSP file 
+	(or whatever file you generated as the pack) 
+	must be included with it.\n
 
 	\subsection howtotag How to Tag WSF Files
 
@@ -301,7 +229,7 @@
 		This works just like INWSF's set title format option!
 
 	- <b>Is WSF opensource?</b>\n
-	\ref wsfsource "You're a fuggin' genius!"
+	\ref wsfsource Yes
 
 */
 
@@ -310,20 +238,12 @@
 
 	\section wsfsrcsec Whelchel Sound Format Source
 
-	Yes, the WSF format <i>is</i> opensource. Its a magical thing actually.\n
-	The main WSF source download can be found \ref wsfsourcedl "HERE"\n
+	Yes, the WSF format <i>is</i> opensource.
 	For exmaples see \ref wsfincode
 
 	\subsection getsrc Obtaining the Source
 
-	You can either download the source from the download page, or use
-	the CVS Module. You can access the CVS Repository like so:\n
-
-	<tt>cvs -d :pserver:guest@syntesis.ath.cx:/WSF login\n
-	pass: cguest\n
-	cvs -d :pserver:guest@syntesis.ath.cx:/WSF co</tt>\n
-	
-	You can browse the CVS Repository <a href="http://cvs.syntesis.ath.cx">HERE</a>
+	<a href="http://www.github.com/soundofjw/WSF">github.com</a>
 
 	\subsection aboutsrc About the Source
 
@@ -364,185 +284,185 @@
 
 	This section explains how to create your own file loader for WSF.\n\n
 
-		<OL>
-		<LI> <b>Add to the WSFModVers enum</b>\n
-		First, in the #WSFModVers enum (in WSFMod.h), create an entry that suits
-		the file format your using best. (eg WSFM_xxx -> WSFM_XM)\n
-		</LI>
+	<OL>
+	<LI> <b>Add to the WSFModVers enum</b>\n
+	First, in the #WSFModVers enum (in WSFMod.h), create an entry that suits
+	the file format your using best. (eg WSFM_xxx -> WSFM_XM)\n
+	</LI>
 
-		<LI> <b>Add Description and Extension</b>\n
-		Go to the definition of #g_cModExt (WSFMod.cpp) and add an entry (which
-		is the same placement of your enum entry before) that is the extension
-		of your format. Use the format ".XXX", and do not exclude the '.'\n
-		In the definition of #g_cModDesc do the same as above, but instead create
-		a suitable description for your format. Such as, "Impulse Tracker Module"\n
-		In the definition of #g_bModFlag you need to add an entry with the correct
-		placement that suits whether or not your loader is enabled. 1 = TRUE, 0 = FALSE\n
-		</LI>
+	<LI> <b>Add Description and Extension</b>\n
+	Go to the definition of #g_cModExt (WSFMod.cpp) and add an entry (which
+	is the same placement of your enum entry before) that is the extension
+	of your format. Use the format ".XXX", and do not exclude the '.'\n
+	In the definition of #g_cModDesc do the same as above, but instead create
+	a suitable description for your format. Such as, "Impulse Tracker Module"\n
+	In the definition of #g_bModFlag you need to add an entry with the correct
+	placement that suits whether or not your loader is enabled. 1 = TRUE, 0 = FALSE\n
+	</LI>
 
-		<LI> <b>Create a new Loader Class</b>\n
-		In WSFMod.h, after the definition of CBaseLoader, you need to create child
-		class of it. Name it something like CxxxLoader, where xxx is the file extension.
-		For instance, the S3M loader is named CS3MLoader.\n
-		\code
-		class CxxxLoader : public CBaseLoader
-		{
-		public:
+	<LI> <b>Create a new Loader Class</b>\n
+	In WSFMod.h, after the definition of CBaseLoader, you need to create child
+	class of it. Name it something like CxxxLoader, where xxx is the file extension.
+	For instance, the S3M loader is named CS3MLoader.\n
+	\code
+	class CxxxLoader : public CBaseLoader
+	{
+	public:
 
-			// Base Function for Loading
-			int Load( wsfb *bData, wsul nSize, wsf_loaddata *wLD );
+		// Base Function for Loading
+		int Load( wsfb *bData, wsul nSize, wsf_loaddata *wLD );
 
-			// Base Saving Function
-			int Save( wsf_modout *wOut, wsf_loaddata *wLD );
+		// Base Saving Function
+		int Save( wsf_modout *wOut, wsf_loaddata *wLD );
 
-			// Function to get pointers to ACTUAL samples
-			int GetSamplePointers( wsfb *bData, wsul nSize, wsf_gspdata *gspData );
+		// Function to get pointers to ACTUAL samples
+		int GetSamplePointers( wsfb *bData, wsul nSize, wsf_gspdata *gspData );
 
-		};
-		\endcode
-		The three functions are REQUIRED functions that must be inherited.\n
-		</LI>
+	};
+	\endcode
+	The three functions are REQUIRED functions that must be inherited.\n
+	</LI>
 
-		<LI> <b>Code the Functions</b>\n
-		In WSFLoaders.cpp, or perferably in your own source file, start
-		creating the code. All the functions should return ZERO for success,
-		and NONZERO for failure. The MACROs at the end of WSFMod.h should be
-		used for reading and writing. These are:\n
-		#MOPEN, #MREAD, #MAPP, #MRESET, #MSEEK, #MBEGIN, #MEND, #MBACK\n
+	<LI> <b>Code the Functions</b>\n
+	In WSFLoaders.cpp, or perferably in your own source file, start
+	creating the code. All the functions should return ZERO for success,
+	and NONZERO for failure. The MACROs at the end of WSFMod.h should be
+	used for reading and writing. These are:\n
+	#MOPEN, #MREAD, #MAPP, #MRESET, #MSEEK, #MBEGIN, #MEND, #MBACK\n
 
-			<UL>
-			<LI> <b>GetSamplePointers</b>\n
-			This function needs to fill a wsf_gspdata structure with the following information:\n
+	<UL>
+	<LI> <b>GetSamplePointers</b>\n
+	This function needs to fill a wsf_gspdata structure with the following information:\n
 
-				<UL start="10">
-				<LI> <U>Number of Samples (nSamples)</U>\n
-				Fill this in with the number of samples.\n
-				</LI>
+	<UL start="10">
+	<LI> <U>Number of Samples (nSamples)</U>\n
+	Fill this in with the number of samples.\n
+	</LI>
 
-				<LI> <U>Sample Offsets (nSampOffs)</U>\n
-				Array of wsul that contains the offsets to the ACTUAL sample data within
-				the file. It should be offset of 0.\n
-				</LI>
+	<LI> <U>Sample Offsets (nSampOffs)</U>\n
+	Array of wsul that contains the offsets to the ACTUAL sample data within
+	the file. It should be offset of 0.\n
+	</LI>
 
-				<LI> <U>Sample Sizes (nSampSizes)</U>\n
-				Array of wsul that contain the sizes of each of the samples in bytes.\n
-				</LI>
+	<LI> <U>Sample Sizes (nSampSizes)</U>\n
+	Array of wsul that contain the sizes of each of the samples in bytes.\n
+	</LI>
 
-				<LI> <U>Channels, Bits, and InnerSamples (nCh, nBit, nInSamps)</U>\n
-				Array of bytes (nInSamps is wsul) that contain the number of channels,
-				bit rate (8 or 16), and number of samples of each sample.\n
-				If the number of samples isn't stored, you can generally retrieve it like this:\n
-				\code
-				nInSamps[i] = nSampSizes[i] / nCh[i] / (nBit[i]/8);
-				\endcode
-				\n			
-				</LI>
+	<LI> <U>Channels, Bits, and InnerSamples (nCh, nBit, nInSamps)</U>\n
+	Array of bytes (nInSamps is wsul) that contain the number of channels,
+	bit rate (8 or 16), and number of samples of each sample.\n
+	If the number of samples isn't stored, you can generally retrieve it like this:\n
+	\code
+	nInSamps[i] = nSampSizes[i] / nCh[i] / (nBit[i]/8);
+	\endcode
+	\n			
+	</LI>
 
-				</UL>
+	</UL>
 
-			This function should also be the one to make sure the loader is opening
-			the correct file format.\n
-			A good example of this code is found at CS3MLoader::GetSamplePointers (WSFLoaders.cpp)\n
-			
-			\note After you have set the number of samples, you can easily init
-			the memory in the wsf_gspdata structure using InitGSPData().
-			However, you should not free this on your own.\n
-			
-			\note If you perfer to simply add to the number of samples as you go along,
-			then you must run InitGSPData with gspData->nSamples = 0 and use the function
-			PushIntoGSP().\n
+	This function should also be the one to make sure the loader is opening
+	the correct file format.\n
+	A good example of this code is found at CS3MLoader::GetSamplePointers (WSFLoaders.cpp)\n
+	
+	\note After you have set the number of samples, you can easily init
+	the memory in the wsf_gspdata structure using InitGSPData().
+	However, you should not free this on your own.\n
+	
+	\note If you perfer to simply add to the number of samples as you go along,
+	then you must run InitGSPData with gspData->nSamples = 0 and use the function
+	PushIntoGSP().\n
 
-			\n
-			</LI>
+	\n
+	</LI>
 
-			<LI> <b>Load</b>\n
-			This function is mainly responsible for loading the samples into a wsf_sample array,
-			their sizes into a wsul array, and storing the MOD data after the samples have been
-			loaded.\n
-			This is done by completeing a wsf_loaddata structure. Alot of this however, is very
-			easy considering the GetSamplePointers function should be called to do this.
+	<LI> <b>Load</b>\n
+	This function is mainly responsible for loading the samples into a wsf_sample array,
+	their sizes into a wsul array, and storing the MOD data after the samples have been
+	loaded.\n
+	This is done by completeing a wsf_loaddata structure. Alot of this however, is very
+	easy considering the GetSamplePointers function should be called to do this.
 
-				<UL start="10">
-				<LI> <U>Number of Samples (nSamples)</U>\n
-				Load this from gspData->nSamples\n
-				</LI>
+	<UL start="10">
+	<LI> <U>Number of Samples (nSamples)</U>\n
+	Load this from gspData->nSamples\n
+	</LI>
 
-				<LI> <U>Samples & Sizes (bSamples & nSampleSizes)</U>\n
-				bSamples is an array of wsf_sample which must be filled
-				out for every sample in the file. <b>If the sample size is
-				0, then DO NOT allocate bSamples[nSamp].bModData!!!</b>\n
-				This data may also be filled out easily from the arrays in wsf_gspdata.
-				</LI>
+	<LI> <U>Samples & Sizes (bSamples & nSampleSizes)</U>\n
+	bSamples is an array of wsf_sample which must be filled
+	out for every sample in the file. <b>If the sample size is
+	0, then DO NOT allocate bSamples[nSamp].bModData!!!</b>\n
+	This data may also be filled out easily from the arrays in wsf_gspdata.
+	</LI>
 
-				<LI> <U>Mod Data (bModData + nModSize)</U>\n
-				After the samples are loaded, you can easily fill this out with the following code:\n
-				\code
-				// Load MOD data
-				wLD->bModData = (wsfb*)malloc(nSize);
-				wLD->nModSize = nSize;
-				memcpy(wLD->bModData,bData,nSize);
-				\endcode
-				\n
-				</LI>
-				
-				<LI> <U>Other Fields (nSubDiff, cTitle, ...)</U>\n
-				Most of these are self-explanatory, except nSubDiff and nModType.
-				You should leave nModType alone seeing as it should already be
-				setup, but in case you want to make sure you can set it to the
-				value of the loader's entry in the WSFModVers enum. nSubDiff should
-				be set to 0.\n
-				</LI>
+	<LI> <U>Mod Data (bModData + nModSize)</U>\n
+	After the samples are loaded, you can easily fill this out with the following code:\n
+	\code
+	// Load MOD data
+	wLD->bModData = (wsfb*)malloc(nSize);
+	wLD->nModSize = nSize;
+	memcpy(wLD->bModData,bData,nSize);
+	\endcode
+	\n
+	</LI>
+	
+	<LI> <U>Other Fields (nSubDiff, cTitle, ...)</U>\n
+	Most of these are self-explanatory, except nSubDiff and nModType.
+	You should leave nModType alone seeing as it should already be
+	setup, but in case you want to make sure you can set it to the
+	value of the loader's entry in the WSFModVers enum. nSubDiff should
+	be set to 0.\n
+	</LI>
 
-				</UL>
-			
-			Loading is one of the trickier functions. After you call GetSamplePointers,
-			be sure to call FreeGSPData to free the pointer. An example of calling
-			this function shows:\n
-			\code
-			wsf_gspdata gD;
-			if (GetSamplePointers(bData,nSize,&gD)){
-				// Error
-				return;
-			}
-			FreeGSPData(&gD);
-			\endcode
-			\n
-			</LI>
+	</UL>
+	
+	Loading is one of the trickier functions. After you call GetSamplePointers,
+	be sure to call FreeGSPData to free the pointer. An example of calling
+	this function shows:\n
+	\code
+	wsf_gspdata gD;
+	if (GetSamplePointers(bData,nSize,&gD)){
+		// Error
+		return;
+	}
+	FreeGSPData(&gD);
+	\endcode
+	\n
+	</LI>
 
-			<LI> <b>Save</b>\n
-			This function is responsible for saving the data in a wsf_loaddata structure
-			into a memory buffer. Normally, this function does nothing, and the samples
-			are replaced automatically through CWSFMod::ReplaceSamplesForSave().
-			<b>However</b>, should this function return 1, the entire saving process
-			can be performed in this function. If it returns a value higher than 1,
-			than an error is assumed. You can return 0 and modify the sample data if
-			you need to change the sample data before saving the file (As in CXMLoader::Save())\n
-			</LI>
+	<LI> <b>Save</b>\n
+	This function is responsible for saving the data in a wsf_loaddata structure
+	into a memory buffer. Normally, this function does nothing, and the samples
+	are replaced automatically through CWSFMod::ReplaceSamplesForSave().
+	<b>However</b>, should this function return 1, the entire saving process
+	can be performed in this function. If it returns a value higher than 1,
+	than an error is assumed. You can return 0 and modify the sample data if
+	you need to change the sample data before saving the file (As in CXMLoader::Save())\n
+	</LI>
 
-			</UL>
+	</UL>
 
-		</LI>
+	</LI>
 
-		<LI> <b>Add Loading Code</b>\n
-		Go to GetBaseLoader() in WSFMod.cpp and add a case to create a new of your class.\n
-		If you made CMODLoader for #WSFM_MOD, you will do the following:\n
-		\code
-		case WSFM_MOD:
-			xBL = (CBaseLoader*) new CMODLoader;
-			break;
-		\endcode
-		\n
-		</LI>
+	<LI> <b>Add Loading Code</b>\n
+	Go to GetBaseLoader() in WSFMod.cpp and add a case to create a new of your class.\n
+	If you made CMODLoader for #WSFM_MOD, you will do the following:\n
+	\code
+	case WSFM_MOD:
+		xBL = (CBaseLoader*) new CMODLoader;
+		break;
+	\endcode
+	\n
+	</LI>
 
-		<LI> <b>Add Playing Code</b>\n
-		You can add playing code in WSFPlay.cpp where you see the switch (bType) line.
-		You will regocnize all your favorite WSFModVers enum entries, and you should
-		add your player code in just as it does. If you're format isn't support by
-		the DUMB sound module, which it most likely isn't, then you'll need to change
-		the callback thread and handling after the switch for your specific format.\n
-		</LI>
+	<LI> <b>Add Playing Code</b>\n
+	You can add playing code in WSFPlay.cpp where you see the switch (bType) line.
+	You will regocnize all your favorite WSFModVers enum entries, and you should
+	add your player code in just as it does. If you're format isn't support by
+	the DUMB sound module, which it most likely isn't, then you'll need to change
+	the callback thread and handling after the switch for your specific format.\n
+	</LI>
 
-		</OL>
+	</OL>
 
 	Your WSF Loader should now be complete! Make sure to study the CS3MLoader, as it
 	is the simplest loader.
@@ -703,22 +623,22 @@
 
 	<b>WSF</b> would not be without the following people:
 
-		- <b>Josh Whelchel</b>\n
-		Don't be stupid (; I "Concieved and Created" the Whelchel Sound Format. :D
+	- <b>Josh Whelchel</b>\n
+	<a href="http://www.twitter.com/soundofjw">Me.</a> I wrote this when I was 16, and figured it should be otu in the open.
 
-		- <b>Simon Pittock</b>\n
-		Helped with the Sample Relationship therom found in CWSFPack::CreateSignature
+	- <b>Simon Pittock</b>\n
+	Helped with the Sample Relationship therom found in CWSFPack::CreateSignature
 
-		- <b>Nobuyuki</b>\n
-		Convinced me to add all the features that I thought were stupid... :< <a href="http://nyuu.cellosoft.com">Nyuu</a>\n
-		Big help with stuff like sample previewing and sample crediting.
+	- <b>Nobuyuki</b>\n
+	Convinced me to add all the features that I thought were stupid... :< <a href="http://nyuu.cellosoft.com">Nyuu</a>\n
+	Big help with stuff like sample previewing and sample crediting.
 
-		- <b>Stephen Rhodes</b>\n
-		Designed the WSF logo!
+	- <b>Stephen Rhodes</b>\n
+	Designed the WSF logo!
 
-		- <b>DUMB Module Library</b>\n
-		WSFPlay and INWSF use <a href="http://dumb.sourceforge.net/">DUMB</a> to render mods!
+	- <b>DUMB Module Library</b>\n
+	WSFPlay and INWSF use <a href="http://dumb.sourceforge.net/">DUMB</a> to render mods!
 
-		- <b>Apocalyptic Coders</b>\n
-		For all their patience with me <b>;_;</b>
+	- <b>Apocalyptic Coders</b>\n
+	For all their patience with me <b>;_;</b>
 */
