@@ -133,8 +133,8 @@ int GetSaveName(HWND hWnd, char *szF, char *Filter, int numfil, char *defext)
 
 int BuildMake( HWND h, char *cTitle, char *cMessage )
 {
-	long nFiles;
-	long x;
+	int nFiles;
+	int x;
 	char cOut[4500];
 	char OutFile[MAX_PATH];
 	OPENFILENAME opf;

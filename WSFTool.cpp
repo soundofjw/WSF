@@ -182,7 +182,7 @@ void RunTOWSF( WSFTSets *wS )
 	char **cVals;
 	char **cTags;
 	int nTags;
-	long nSCount[WSFS_COUNT];
+	int nSCount[WSFS_COUNT];
 	wsf_modout wO;
 	FILE *OFile;
 	CWSFAscii mA;
@@ -216,7 +216,7 @@ void RunTOWSF( WSFTSets *wS )
 	// Search Files
 	if (wS->nInputs > 0)
 	{
-		long nTemp[WSFS_COUNT];
+		int nTemp[WSFS_COUNT];
 		int xc;		
 
 		for (xc=0;xc<WSFS_COUNT;xc++)
@@ -276,7 +276,7 @@ void RunTOWSF( WSFTSets *wS )
 
 		// Get WSF
 		printf("Writing WSF %s...\n",cFile);
-		if (g_wMod->WriteMod(&wO,1,(long*)&nTemp)) {
+		if (g_wMod->WriteMod(&wO,1,(int*)&nTemp)) {
 			printf("Could not write %s\n",cFile);
 			return;
 		}
@@ -357,7 +357,7 @@ void RunTOWSF( WSFTSets *wS )
 
 			// Get WSF
 			printf("Writing WSF %s...\n",cFile);
-			if (g_wMod->WriteMod(&wO,1,(long*)&nTemp)) {
+			if (g_wMod->WriteMod(&wO,1,(int*)&nTemp)) {
 				printf("Could not write %s\n",cFile);
 				return;
 			}
@@ -682,7 +682,7 @@ void FillSetting( char *cLine, int nNum, WSFTSets *wS )
 	if (cmd[0] != '-' && cmd[0] != '/') {
 #ifdef WIN32
 		FINDDATA c_file;
-		long hFile=0;
+		int hFile=0;
 		
 		if ((hFile = FINDFIRST(cmd,&c_file)) != FINDERR)
 		{
@@ -1188,7 +1188,7 @@ wsul GetModLength( char *cIn )
 	return nSecs;
 }
 
-void mp3sDSPProc(void *data, sample_t **samples, int n_channels, long length)
+void mp3sDSPProc(void *data, sample_t **samples, int n_channels, int length)
 {
 	CWSFSTagHandler *gST;
 	gST = (CWSFSTagHandler*)data;
@@ -1230,7 +1230,7 @@ void WriteMp3( WSFTSets *wS, char *cIn, char *cFile )
 	int done=0;
 	int nCount=0;
 	float delta;
-	long towrite=576*2*2;
+	int towrite=576*2*2;
 	DUH_SIGRENDERER *dSig;
 	wsul nLen;
 	DUMB_IT_SIGRENDERER *itsr;

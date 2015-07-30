@@ -62,7 +62,7 @@ typedef struct wsft_s
 	/// Number Arg
 	/// MP3:
 	/// 0 - bitrate, 1 - quality
-	long nArg[20];
+	int nArg[20];
 
 	/// Number of Tags
 	int nTags;

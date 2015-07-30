@@ -72,7 +72,7 @@ public:
 	int GetSamp( wsf_sampout *wOut, char *cSampSig );	// Returns 1 if error :<
 
 	/// Gets sample by ID
-	int GetSamp( wsf_sampout *wOut, unsigned long nID, wsfb bFlag, wsul nPar, wsfb bAmp ); // Returns 1 if error :<
+	int GetSamp( wsf_sampout *wOut, unsigned int nID, wsfb bFlag, wsul nPar, wsfb bAmp ); // Returns 1 if error :<
 
 	/// Gets a samples size, even if its unloaded.
 	wsul GetSampSize( wsul nID );
@@ -123,17 +123,17 @@ public:
 	int SavePack( wsf_file *PFile, wsfb bComp );
 
 	/// DeCompresses Sample
-	int DeCompressSample( wsfb *bCompSamp, unsigned long nCompSize, wsfb **bOutSamp, unsigned long nFullSize );
+	int DeCompressSample( wsfb *bCompSamp, unsigned int nCompSize, wsfb **bOutSamp, unsigned int nFullSize );
 	/// Compresses Sample
-	int CompressSample( wsfb *bFullSamp, unsigned long nFullSize, wsfb **bOutSamp, unsigned long *nCompSize );
+	int CompressSample( wsfb *bFullSamp, unsigned int nFullSize, wsfb **bOutSamp, unsigned int *nCompSize );
 
 	/// Makes percentage out of two integers
 	/// \param nLow Low UL (50 out of 100 = 50)
 	/// \param nHi Hi UL (50 out of 100 = 100)
-	unsigned long MakePercent( wsul nLow, wsul nHi );
+	unsigned int MakePercent( wsul nLow, wsul nHi );
 
 	/// Gets Number of Samples
-	unsigned long GetNumSamples( void )
+	unsigned int GetNumSamples( void )
 	{
 		return m_nSamples;
 	};
@@ -168,7 +168,7 @@ private:
 
 	int m_nLoaded;				// Loaded?
 
-	unsigned long m_nSamples;	// Number of Samples
+	unsigned int m_nSamples;	// Number of Samples
 	wsf_sample *m_wSamples;		// Samples	
 
 };

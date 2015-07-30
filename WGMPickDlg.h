@@ -26,7 +26,7 @@
 /// \file WGMPickDlg.h
 /// WGM Selection Dialog Header
 
-#include <windows.h>
+//#include <windows.h>
 #include "WSFGlob.h"
 
 typedef enum

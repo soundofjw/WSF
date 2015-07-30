@@ -407,7 +407,7 @@ int nTest=0;
 // [nRepOff] : Replaces data at this offset
 // [nRepLength] : with this length
 // [*bFill] : with data at this buffer
-// [nFillLen] : that is this long
+// [nFillLen] : that is this int
 // and
 // Returns:	the new buffer
 // 
@@ -418,11 +418,11 @@ int nTest=0;
 /// This is used when the samples are inserted into the mod from the sample library,
 /// or vice versa when the samples are extracted from the sample library.
 /// \note The bIn parameter is not automatically freed and it needs to be.
-wsfb *CBaseLoader::ReplaceData( wsfb *bIn, unsigned long nIn, unsigned long *nOut, unsigned long nRepOff, unsigned long nRepLength, wsfb *bFill, unsigned long nFillLen )
+wsfb *CBaseLoader::ReplaceData( wsfb *bIn, unsigned int nIn, unsigned int *nOut, unsigned int nRepOff, unsigned int nRepLength, wsfb *bFill, unsigned int nFillLen )
 {
 	wsfb *bOut;
 	wsfb *bPos;
-	unsigned long nNewSize;
+	unsigned int nNewSize;
 	
 	// Gets new size
 	nNewSize = nIn - nRepLength + nFillLen;
@@ -544,7 +544,7 @@ int CWSFMod::ReplaceSamplesForSave( wsf_modout *wOut, CBaseLoader *xBL, wsf_load
 	wsfb *bDat;
 	wsul i;
 	wsul *nOffs;
-	long nSub;
+	int nSub;
 
 	// Copy over MOD Data
 	nSize = wLD->nModSize;
@@ -623,7 +623,7 @@ int CWSFMod::ReplaceSamplesForSave( wsf_modout *wOut, CBaseLoader *xBL, wsf_load
 // 
 //***************************************************************************** */
 
-int CWSFMod::WriteMod( wsf_modout *wOut, int nWSF, long *nSCounts )
+int CWSFMod::WriteMod( wsf_modout *wOut, int nWSF, int *nSCounts )
 {
 	int nr;
 	CBaseLoader *xBL;
@@ -816,7 +816,7 @@ void CWSFMod::SetPassSum( int nPassSum )
 
 int CWSFMod::FreeMod( void )
 {
-	unsigned long i;
+	unsigned int i;
 	if (!m_nLoaded)
 		return 1;
 
@@ -1317,7 +1317,7 @@ int CWSFAscii::SetWSFAscii( char *fn, char *cIn )
 	wsf_file *MFile;
 	unsigned short nS;
 	wsfb *bDat;
-	unsigned long nSize;
+	unsigned int nSize;
 	
 	// Open the file
 	MFile = wsfopenfile(fn);
@@ -2289,7 +2289,7 @@ void wsfbegin( wsul nOff, wsf_file *wf )
 /// \param *wf file handle
 //////////////////////////////////////////////////////
 
-void wsfend( long nOff, wsf_file *wf )
+void wsfend( int nOff, wsf_file *wf )
 {
 	wf->nPos = wf->nSize + nOff;
 

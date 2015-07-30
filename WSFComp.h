@@ -32,14 +32,14 @@ extern "C" {
 /// @param bOutput Replaced with pointer to data (must be freed)
 /// @param nOutLen Replaced with output size
 /// @param bCompress TRUE = Compress, FALSE = Decompress
-int DoCompression( unsigned char *bInput, long nFileSize, long nOldSize, unsigned char **bOutput, unsigned long *nOutLen, char bCompress );
+int DoCompression( unsigned char *bInput, int nFileSize, int nOldSize, unsigned char **bOutput, unsigned int *nOutLen, char bCompress );
 
 // Uses dumb here :/
-unsigned long wsf_decompress16(unsigned char *f, signed char *left, signed char *right, int len, int cmwt);
-unsigned long wsf_decompress8(unsigned char *f, signed char *left, signed char *right, int len, int cmwt);
+unsigned int wsf_decompress16(unsigned char *f, signed char *left, signed char *right, int len, int cmwt);
+unsigned int wsf_decompress8(unsigned char *f, signed char *left, signed char *right, int len, int cmwt);
 // MODPLUG STYLE
-unsigned long wsfITUnpack16Bit(char *pSample, unsigned long dwLen, unsigned char *lpMemFile, unsigned long dwMemLength, int b215);
-unsigned long wsfITUnpack8Bit(char *pSample, unsigned long dwLen, unsigned char *lpMemFile, unsigned long dwMemLength, int b215);
+unsigned int wsfITUnpack16Bit(char *pSample, unsigned int dwLen, unsigned char *lpMemFile, unsigned int dwMemLength, int b215);
+unsigned int wsfITUnpack8Bit(char *pSample, unsigned int dwLen, unsigned char *lpMemFile, unsigned int dwMemLength, int b215);
 
 
 #ifdef __cplusplus

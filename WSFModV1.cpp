@@ -283,7 +283,7 @@ int CWSFModV1::ReplaceSamplesForSave( wsf_modout *wOut, CBaseLoader *xBL, wsf_lo
 	wsfb *bDat;
 	wsul i;
 	wsul *nOffs;
-	long nSub;
+	int nSub;
 
 	// Copy over MOD Data
 	nSize = wLD->nModSize;
@@ -350,7 +350,7 @@ int CWSFModV1::ReplaceSamplesForSave( wsf_modout *wOut, CBaseLoader *xBL, wsf_lo
 // 
 //***************************************************************************** */
 
-int CWSFModV1::WriteMod( wsf_modout *wOut, int nWSF, long *nSCounts )
+int CWSFModV1::WriteMod( wsf_modout *wOut, int nWSF, int *nSCounts )
 {
 	int nr;
 	CBaseLoader *xBL;
@@ -528,7 +528,7 @@ void CWSFModV1::SetPassSum( int nPassSum )
 
 int CWSFModV1::FreeMod( void )
 {
-	unsigned long i;
+	unsigned int i;
 	if (!m_nLoaded)
 		return 1;
 

@@ -82,21 +82,21 @@ int CWSFLoaderV1::Save( wsf_modout *wOut, wsf_loaddata *wLD )
 // 
 //***************************************************************************** */
 
-int CWSFLoaderV1::Save( wsf_modout *wOut, wsf_loaddata *wLD, long *nSCounts )
+int CWSFLoaderV1::Save( wsf_modout *wOut, wsf_loaddata *wLD, int *nSCounts )
 {
-	unsigned long i;
+	unsigned int i;
 	wsfb bHi,bLo;
 	wsfb *bDat;
-	unsigned long nSize;
+	unsigned int nSize;
 	wsfb bFill[4];
 	unsigned short sH;
-	unsigned long nCSize;
+	unsigned int nCSize;
 	CBaseLoader *xBL;
 	wsfb *bCDat;
-	long nSub;
+	int nSub;
 	wsf_gspdata gD;
 	char cOutExt[5];
-	long nSCount[WSFS_COUNT];
+	int nSCount[WSFS_COUNT];
 
 	wsul *nPar;
 	wsfb *bFlag;
@@ -194,13 +194,13 @@ int CWSFLoaderV1::Save( wsf_modout *wOut, wsf_loaddata *wLD, long *nSCounts )
 #endif
 
 	// Write Mod FULL Size
-	MAPP(&nSize,1,sizeof(unsigned long));
+	MAPP(&nSize,1,4);
 
 	// Compress MOD
 	DoCompression(bDat,nSize,0,&bCDat,&nCSize,true);
 
 	// Write Mod Compressed Size
-	MAPP(&nCSize,1,sizeof(unsigned long));
+	MAPP(&nCSize,1,4);
 
 	// Write (Compressed) Mod
 	MAPP(bCDat,1,nCSize);
@@ -209,7 +209,7 @@ int CWSFLoaderV1::Save( wsf_modout *wOut, wsf_loaddata *wLD, long *nSCounts )
 	free(bCDat);
 
 	// Write number of Samples
-	MAPP(&wLD->nSamples,1,sizeof(unsigned long));
+	MAPP(&wLD->nSamples,1,4);
 
 	nIDx = (wsul*)malloc(sizeof(wsul)*wLD->nSamples);
 	nPar = (wsul*)malloc(sizeof(wsul)*wLD->nSamples);
@@ -225,8 +225,8 @@ int CWSFLoaderV1::Save( wsf_modout *wOut, wsf_loaddata *wLD, long *nSCounts )
 	{
 		wsf_sample *wS;
 		wsf_sampout wO;
-		unsigned long *nS;
-		unsigned long nID;
+		unsigned int *nS;
+		unsigned int nID;
 		char cSampSig[SIGNATURESIZE+1];
 
 		// Pick Sample
@@ -320,19 +320,19 @@ int CWSFLoaderV1::Save( wsf_modout *wOut, wsf_loaddata *wLD, long *nSCounts )
 	free(bExtras);
 
 	// Write Sub Diff
-	MAPP(&nSub,1,sizeof(unsigned long));
+	MAPP(&nSub,1,4);
 
 	for (i=0;i<wLD->nSamples;i++)
 	{
-		unsigned long *nS;
+		unsigned int *nS;
 
 		// Pick Sample
 		nS = &wLD->nSampleSizes[i];
 
 		// Write Sample Signature
-		MAPP(&nIDx[i],1,sizeof(unsigned long));
+		MAPP(&nIDx[i],1,4);
 		// Write Sample Size
-		MAPP(nS,1,sizeof(unsigned long));
+		MAPP(nS,1,4);
 		// Write Sample Offset!
 		MAPP(&gD.nSampOffs[i],1,sizeof(wsul));
 
@@ -356,7 +356,7 @@ int CWSFLoaderV1::Save( wsf_modout *wOut, wsf_loaddata *wLD, long *nSCounts )
 	MRESET(&wOut->bModData,&wOut->nSize);
 
 	if (nSCounts)
-		memcpy(nSCounts,&nSCount,sizeof(long)*(WSFS_COUNT));
+		memcpy(nSCounts,&nSCount,4*(WSFS_COUNT));
 
 	return 0;
 }
@@ -386,8 +386,8 @@ int CWSFLoaderV1::Load( wsfb *bData, wsul nSize, wsf_loaddata *wLD )
 	char cHead[4];
 	char cTPack[27];
 	char cPack[200];
-	unsigned long i;
-	unsigned long nCSize;
+	unsigned int i;
+	unsigned int nCSize;
 	wsfb *bCDat;
 	wsul *nIDs;
 	wsfb *bFlags;
@@ -430,8 +430,8 @@ int CWSFLoaderV1::Load( wsfb *bData, wsul nSize, wsf_loaddata *wLD )
 	wLD->nModType = m_nModType;
 
 	// Read size of mod file ahead and then read the mod
-	MREAD(&wLD->nModSize,1,sizeof(unsigned long));		// Full Size
-	MREAD(&nCSize,1,sizeof(unsigned long));		// Compressed Size
+	MREAD(&wLD->nModSize,1,4);		// Full Size
+	MREAD(&nCSize,1,4);		// Compressed Size
 
 	// Allocate Room 
 	bCDat = (wsfb*)malloc(nCSize);
@@ -444,9 +444,9 @@ int CWSFLoaderV1::Load( wsfb *bData, wsul nSize, wsf_loaddata *wLD )
 	free(bCDat);
 
 	// After the mod is read, find samples
-	MREAD(&wLD->nSamples,1,sizeof(unsigned long));
+	MREAD(&wLD->nSamples,1,4);
 	wLD->bSamples = (wsf_sample*)malloc(sizeof(wsf_sample)*wLD->nSamples);
-	wLD->nSampleSizes = (unsigned long*)malloc(sizeof(unsigned long)*wLD->nSamples);
+	wLD->nSampleSizes = (unsigned int*)malloc(4*wLD->nSamples);
 	wLD->nSampleOffsets = (wsul*)malloc(sizeof(wsul)*wLD->nSamples);
 
 	// Read Extras
@@ -465,9 +465,9 @@ int CWSFLoaderV1::Load( wsfb *bData, wsul nSize, wsf_loaddata *wLD )
 		nExtras=0;
 		bExtras = (wsul*)malloc(0);
 	}
-		
 
-	MREAD(&wLD->nSubDiff,1,sizeof(unsigned long));
+
+	MREAD(&wLD->nSubDiff,1,4);
 
 	// Make array for number of IDs
 	nIDs = (wsul*)malloc(sizeof(wsul)*(wLD->nSamples+nExtras));
@@ -485,7 +485,7 @@ int CWSFLoaderV1::Load( wsfb *bData, wsul nSize, wsf_loaddata *wLD )
 		nID = &nIDs[i];
 
 		MREAD(nID,1,sizeof(wsul));
-		MREAD(nS,1,sizeof(unsigned long));
+		MREAD(nS,1,4);
 		
 		if (TESTVER(1,12))
 		{
